@@ -7,37 +7,35 @@
   <title>CAPS ODELL</title>
 
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      /* Align items to the top */
+      min-height: 100vh;
+      /* Ensure the body takes at least the full viewport height */
+      background-color: #2a5f7a;
+      /* Set the background color */
+    }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Align items to the top */
-    min-height: 100vh; /* Ensure the body takes at least the full viewport height */
-    background-color: #2a5f7a; /* Set the background color */
-}
+    .bottom-left-image {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      /* Adjust the height as needed */
+    }
 
-.bottom-left-image {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: auto; /* Adjust the height as needed */
-}
-
-.container {
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 50px; /* Add margin to the top */
-}
-
-    label {
-      display: block;
-      margin-bottom: 10px;
+    .container {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.5);
+      padding: 21px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 50px;
     }
 
     textarea {
@@ -48,7 +46,7 @@ body {
     }
 
     button {
-      background-color: #3498db;
+      background-color: #3f829d;
       color: #fff;
       border: none;
       padding: 10px 20px;
@@ -58,11 +56,6 @@ body {
 
     button:hover {
       background-color: #2980b9;
-    }
-
-    #result {
-      margin-top: 20px;
-      font-weight: bold;
     }
   </style>
 
@@ -75,7 +68,6 @@ body {
   <div class="container">
     <textarea id="textInput" placeholder="PASTE YOUR TEXT HERE"></textarea>
     <button onclick="copyToClipboard()">COPY</button>
-
   </div>
 
   <script>
