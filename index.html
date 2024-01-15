@@ -2,81 +2,103 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAPS ODELL</title>
-    
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAPS ODELL</title>
 
-      body {
-          font-family: Arial, sans-serif;
-          background-color: #f4f4f4;
-          margin: 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-      }
-    
-      .container {
-          text-align: center;
-          background-color: #fff;
-          padding: 20px;
-          border-radius: 8px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-    
-      label {
-          display: block;
-          margin-bottom: 10px;
-      }
-    
-      textarea {
-          width: 100%;
-          height: 100px;
-          resize: none;
-          margin-bottom: 10px;
-      }
-    
-      button {
-          background-color: #3498db;
-          color: #fff;
-          border: none;
-          padding: 10px 20px;
-          font-size: 16px;
-          cursor: pointer;
-      }
-    
-      button:hover {
-          background-color: #2980b9;
-      }
-    
-      #result {
-          margin-top: 20px;
-          font-weight: bold;
-      }
-    
-    </style>
-    
+  <style>
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+    min-height: 100vh; /* Ensure the body takes at least the full viewport height */
+    background-color: #2a5f7a; /* Set the background color */
+}
+
+.bottom-left-image {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto; /* Adjust the height as needed */
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px; /* Add margin to the top */
+}
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      resize: none;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+
 </head>
+
 <body>
 
-    <div class="container">
-        <label for="textInput">Paste text:</label>
-        <textarea id="textInput" placeholder="Paste your text here"></textarea>
-        <button onclick="convertToUpperCase()">Convert to Uppercase</button>
-        <div id="result"></div>
-    </div>
+  <img src="CAPSODELL.JPG" alt="CAPSODELL" class="bottom-left-image">
 
-    <script>
+  <div class="container">
+    <textarea id="textInput" placeholder="PASTE YOUR TEXT HERE"></textarea>
+    <button onclick="copyToClipboard()">COPY</button>
 
-      function convertToUpperCase()
-      {
-          var inputText = document.getElementById("textInput").value;
-          var resultDiv = document.getElementById("result");
-          resultDiv.innerText = inputText.toUpperCase();
-      }
+  </div>
 
-    </script>
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var textInput = document.getElementById("textInput");
+
+      textInput.addEventListener("input", function () {
+        textInput.value = textInput.value.toUpperCase();
+      });
+    });
+
+    function copyToClipboard() {
+      var textInput = document.getElementById("textInput");
+      textInput.select();
+      document.execCommand("copy");
+
+      // You can provide some visual feedback to the user (e.g., change button text)
+      alert("Text copied to clipboard!");
+    }
+
+
+  </script>
 </body>
+
 </html>
