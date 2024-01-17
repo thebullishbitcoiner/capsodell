@@ -5,38 +5,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CAPS ODELL</title>
+  <link rel="manifest" href="manifest.json">
 
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      /* Align items to the top */
-      min-height: 100vh;
-      /* Ensure the body takes at least the full viewport height */
-      background-color: #2a5f7a;
-      /* Set the background color */
-    }
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #2a5f7a;
+}
+
+.title-image {
+    max-width: 390px;
+    width: 100%;
+    margin-top: 10px; /* Add margin to separate from the top */
+}
+
+.container {
+  max-width: 390px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 21px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
     .bottom-left-image {
       position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
-      max-width: 600px;
+      max-width: 500px;
       height: auto;
-      /* Adjust the height as needed */
-    }
-
-    .container {
-      text-align: center;
-      background-color: rgba(255, 255, 255, 0.5);
-      padding: 21px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      margin-top: 50px;
     }
 
     textarea {
@@ -58,18 +62,39 @@
     button:hover {
       background-color: #2980b9;
     }
+
+    .footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: 12px;
+    padding-right: 10px;
+    margin-bottom: -5px;
+    color: #121212; 
+}
+
+.footer a {
+    color: #ff9900; 
+    text-decoration: none; /* Remove default underline */
+}
   </style>
 
 </head>
 
 <body>
 
-  <img src="CAPSODELL.JPG" alt="CAPSODELL" class="bottom-left-image">
+  <img src="CAPSODELL_TITLE.PNG" alt="CAPSODELL_TITLE" class="title-image">
 
   <div class="container">
     <textarea id="textInput" placeholder="PASTE YOUR TEXT HERE"></textarea>
-    <button onclick="copyToClipboard()">COPY</button>
+    <button id="copyButton" onclick="copyToClipboard()">COPY</button>
   </div>
+
+  <img src="CAPSODELL.JPG" alt="CAPSODELL" class="bottom-left-image">
+
+  <div class="footer">
+    <p>v0.0.21 | Made with 🐂 by <a href="https://thebullishbitcoiner.com/" target="_blank">thebullishbitcoiner</a></p>
+</div>
 
   <script>
 
@@ -86,8 +111,11 @@
       textInput.select();
       document.execCommand("copy");
 
-      // You can provide some visual feedback to the user (e.g., change button text)
-      alert("Text copied to clipboard!");
+      var copyButton = document.getElementById("copyButton");
+      copyButton.innerText = "COPIED!"; // Change the button text
+      setTimeout(function () {
+        copyButton.innerText = "COPY"; // Reset button text after a brief delay
+      }, 1500); // Adjust the delay time as needed
     }
 
 
