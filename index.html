@@ -111,10 +111,8 @@
       color: #121212;
       position: fixed;
       bottom: 10px;
-      /* Adjust the bottom value as needed */
       left: 50%;
       transform: translateX(-50%);
-      margin-bottom: -10px;
     }
   </style>
 
@@ -126,6 +124,7 @@
 
   <div class="container">
     <textarea id="textInput" placeholder="PASTE YOUR TEXT HERE"></textarea>
+    <button id="clearButton">CLEAR</button>
     <button id="copyButton" onclick="copyToClipboard()">COPY</button>
   </div>
 
@@ -138,7 +137,7 @@
   <img src="CAPSODELL.JPG" alt="CAPSODELL" class="bottom-left-image" onclick="changeOdellism()">
 
   <div class="version">
-    <p>v0.0.22</p>
+    <p>V0.0.23</p>
   </div>
 
   <script>
@@ -149,6 +148,10 @@
       textInput.addEventListener("input", function () {
         textInput.value = textInput.value.toUpperCase();
       });
+    });
+
+    document.getElementById('clearButton').addEventListener('click', function () {
+      document.getElementById('textInput').value = '';
     });
 
     function copyToClipboard() {
