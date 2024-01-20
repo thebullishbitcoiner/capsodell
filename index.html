@@ -122,9 +122,8 @@
   <img src="CAPSODELL_TITLE.PNG" alt="CAPSODELL_TITLE" class="title-image">
 
   <div class="container">
-    <textarea id="textInput" placeholder="NOT YELLING. SPEAKING CLEARLY."></textarea>
+    <textarea id="textInput" placeholder="ENTER TEXT TO BE SPOKEN CLEARLY"></textarea>
     <button id="copyButton" onclick="copyToClipboard()">COPY</button>
-    <button id="pasteButton">PASTE</button>
     <button id="clearButton">CLEAR</button>
   </div>
 
@@ -137,7 +136,7 @@
   <img src="CAPSODELL.JPG" alt="CAPSODELL" class="bottom-left-image" onclick="changeOdellism()">
 
   <div class="version">
-    <p>V0.0.26</p>
+    <p>V0.0.42</p>
   </div>
 
   <script>
@@ -162,13 +161,6 @@
         copyButton.innerText = "COPY"; // Reset button text after a brief delay
       }, 1500); // Adjust the delay time as needed
     }
-
-    //PASTE EVENT HANDLER
-    document.getElementById('pasteButton').addEventListener('click', function () {
-      navigator.clipboard.readText().then(function (text) {
-        document.getElementById('textInput').value = text;
-      });
-    });
 
     //CLEAR EVENT HANDLER
     document.getElementById('clearButton').addEventListener('click', function () {
