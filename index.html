@@ -20,14 +20,14 @@
     }
 
     .title-image {
-      max-width: 370px;
+      max-width: 330px;
       width: 100%;
       margin-top: 10px;
       /* Add margin to separate from the top */
     }
 
     .container {
-      max-width: 300px;
+      max-width: 260px;
       text-align: center;
       background-color: rgba(255, 255, 255, 0.5);
       padding: 21px;
@@ -56,7 +56,7 @@
 
     textarea {
       width: 100%;
-      height: 100px;
+      height: 90px;
       resize: none;
       margin-bottom: 10px;
     }
@@ -65,8 +65,8 @@
       background-color: #3f829d;
       color: #fff;
       border: none;
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 10px 10px;
+      font-size: 14px;
       cursor: pointer;
     }
 
@@ -81,7 +81,6 @@
       width: 150px;
       height: 100px;
       max-width: 600px;
-      /* Adjust the max-width as needed */
       background-color: transparent;
       text-align: center;
       display: flex;
@@ -100,7 +99,7 @@
 
     .overlay-text {
       font-size: 21px;
-      font-weight: bold; 
+      font-weight: bold;
       color: black;
       width: 100%;
       margin: 0;
@@ -123,9 +122,10 @@
   <img src="CAPSODELL_TITLE.PNG" alt="CAPSODELL_TITLE" class="title-image">
 
   <div class="container">
-    <textarea id="textInput" placeholder="PASTE YOUR TEXT HERE"></textarea>
-    <button id="clearButton">CLEAR</button>
+    <textarea id="textInput" placeholder="NOT YELLING. SPEAKING CLEARLY."></textarea>
     <button id="copyButton" onclick="copyToClipboard()">COPY</button>
+    <button id="pasteButton">PASTE</button>
+    <button id="clearButton">CLEAR</button>
   </div>
 
   <p class="made-by">MADE WITH 🐂 BY <a href="https://thebullishbitcoiner.com/" target="_blank">THEBULLISHBITCOINER</a>
@@ -137,21 +137,18 @@
   <img src="CAPSODELL.JPG" alt="CAPSODELL" class="bottom-left-image" onclick="changeOdellism()">
 
   <div class="version">
-    <p>V0.0.25</p>
+    <p>V0.0.26</p>
   </div>
 
   <script>
 
+    //TEXT CHANGED EVENT HANDLER
     document.addEventListener("DOMContentLoaded", function () {
       var textInput = document.getElementById("textInput");
 
       textInput.addEventListener("input", function () {
         textInput.value = textInput.value.toUpperCase();
       });
-    });
-
-    document.getElementById('clearButton').addEventListener('click', function () {
-      document.getElementById('textInput').value = '';
     });
 
     function copyToClipboard() {
@@ -165,6 +162,19 @@
         copyButton.innerText = "COPY"; // Reset button text after a brief delay
       }, 1500); // Adjust the delay time as needed
     }
+
+    //PASTE EVENT HANDLER
+    document.getElementById('pasteButton').addEventListener('click', function () {
+      navigator.clipboard.readText().then(function (text) {
+        document.getElementById('textInput').value = text;
+      });
+    });
+
+    //CLEAR EVENT HANDLER
+    document.getElementById('clearButton').addEventListener('click', function () {
+      document.getElementById('textInput').value = '';
+    });
+
 
     // Add this function to load text from ODELLISMS.TXT
     function loadOdellisms() {
@@ -241,7 +251,6 @@
       return Math.floor(Math.random() * odellisms.length);
     }
 
-
     function getTextHeight(text, fontSize) {
       const span = document.createElement('span');
       span.style.fontSize = fontSize + 'px';
@@ -255,7 +264,6 @@
       return height;
     }
 
-
     function getTextWidth(text, fontSize) {
       // Helper function to get the width of the text with a specific font size
       const canvas = document.createElement('canvas');
@@ -263,7 +271,6 @@
       context.font = fontSize + 'px Arial';
       return context.measureText(text).width;
     }
-
 
   </script>
 </body>
