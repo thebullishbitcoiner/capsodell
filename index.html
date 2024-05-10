@@ -136,7 +136,7 @@
   <img src="CAPSODELL.JPG" alt="CAPSODELL" class="bottom-left-image" onclick="changeOdellism()">
 
   <div class="version">
-    <p>v42.0.46</p>
+    <p>v42.0.47</p>
   </div>
 
   <script>
@@ -185,19 +185,15 @@
 
 
     // Add this function to load text from ODELLISMS.TXT
-    // function loadOdellisms() {
-    //   return fetch('ODELLISMS.TXT')
-    //     .then(response => response.text())
-    //     .then(text => text.split('\n').filter(line => line.trim() !== ''));
-    // }
-
     function loadOdellisms() {
-    return fetch('ODELLISMS.TXT') // Fetch the odellisms text file
-        .then(response => response.text()) // Get the text content of the file
-        .then(text => text.split('🫡') // Split the text into an array using "!" as the delimiter
-            .filter(line => line.trim() !== '') // Filter out empty lines
-        );
-}
+        return fetch('ODELLISMS.TXT') // Fetch the odellisms text file
+            .then(response => response.text()) // Get the text content of the file
+            .then(text => text.split('🫡') // Split the text into an array using "🫡" as the delimiter
+                .map(odellism => odellism.split('\n')) // Further split each odellism using "\n" as the delimiter
+                .flat() // Flatten the array of arrays
+                .filter(line => line.trim() !== '') // Filter out empty lines
+            );
+    }
 
     // let odellisms = ["ONWARD.",
     //   "STAY HUMBLE AND\nSTACK SATS.",
