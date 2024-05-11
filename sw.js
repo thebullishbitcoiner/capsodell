@@ -2,11 +2,7 @@ const CACHE_NAME = 'odellisms-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/styles.css',
-  '/script.js',
-  '/ODELLISMS.TXT', // Adjust the path as needed
-  '/CAPSODELL.JPG', // Adjust the path as needed
-  '/CAPODELL_TITLE.PNG', // Adjust the path as needed
+  '/ODELLISMS.TXT',
 ];
 
 self.addEventListener('install', event => {
