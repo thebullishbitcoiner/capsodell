@@ -314,6 +314,22 @@
         window.location.reload();
     }
 
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistration()
+          .then(registration => {
+            if (registration) {
+              console.log('Service worker scope:', registration.scope);
+            } else {
+              console.log('No service worker registered.');
+            }
+          })
+          .catch(error => {
+            console.error('Error checking service worker scope:', error);
+          });
+    } else {
+      console.log('Service worker not supported.');
+    }
+
   </script>
 
 </body>
