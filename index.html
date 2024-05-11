@@ -136,7 +136,7 @@
   <img src="CAPSODELL.JPG" alt="CAPSODELL" class="bottom-left-image" onclick="changeOdellism()">
 
   <div class="version">
-    <p>v42.0.56</p>
+    <p>v42.0.57</p>
   </div>
 
   <script>
@@ -284,7 +284,38 @@
       return context.measureText(text).width;
     }
 
+    // Check for service worker support
+    if ('serviceWorker' in navigator) {
+        // Register the service worker
+        navigator.serviceWorker.register('/sw.js').then(registration => {
+            registration.addEventListener('updatefound', () => {
+                const newWorker = registration.installing;
+                newWorker.addEventListener('statechange', () => {
+                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                        // A new version is available
+                        showNewVersionNotification();
+                    }
+                });
+            });
+        });
+    }
+
+    function showNewVersionNotification() {
+        const notification = document.createElement('div');
+        notification.innerHTML = `
+            <div class="new-version-notification">
+                A new version is available! Click <button onclick="reloadPage()">here</button> to reload.
+            </div>
+        `;
+        document.body.appendChild(notification);
+    }
+
+    function reloadPage() {
+        window.location.reload();
+    }
+
   </script>
+
 </body>
 
 </html>
