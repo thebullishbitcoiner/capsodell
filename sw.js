@@ -1,6 +1,5 @@
 const CACHE_NAME = 'odellisms-cache-v1';
 const urlsToCache = [
-  '/',
   '/index.html',
   '/ODELLISMS.TXT',
 ];
