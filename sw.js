@@ -1,4 +1,4 @@
-const CACHE_NAME = 'odellisms-cache-v1';
+const CACHE_NAME = 'odellisms-cache-v42.0.61';
 const urlsToCache = [
   '/index.html',
   '/ODELLISMS.TXT',
