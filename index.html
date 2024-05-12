@@ -119,6 +119,11 @@
 
 <body>
 
+  <div id="update-notification" style="display: none;">
+    A new version of the application is available. Click reload to update.
+    <button onclick="reloadPage()">Reload</button>
+  </div>
+
   <img src="CAPSODELL_TITLE.PNG" alt="CAPSODELL_TITLE" class="title-image">
 
   <div class="container">
@@ -136,7 +141,7 @@
   <img src="CAPSODELL.JPG" alt="CAPSODELL" class="bottom-left-image" onclick="changeOdellism()">
 
   <div class="version">
-    <p>v42.0.64</p>
+    <p>v42.0.65</p>
   </div>
 
   <script>
@@ -296,6 +301,13 @@
                         showNewVersionNotification();
                     }
                 });
+            });
+            // Listen for messages from the service worker
+            registration.addEventListener('message', event => {
+              if (event.data && event.data.type === 'service-worker-update') {
+                // Display the update notification
+                document.getElementById('update-notification').style.display = 'block';
+              }
             });
         });
     }
